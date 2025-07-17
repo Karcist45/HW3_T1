@@ -31,5 +31,5 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter:3.5.3")
-	//annotationProcessor("org.springframework.boot:spring-boot-autoconfigure-processor")
+	implementation("org.springframework.boot:spring-boot-starter-aop:3.5.3")
 }

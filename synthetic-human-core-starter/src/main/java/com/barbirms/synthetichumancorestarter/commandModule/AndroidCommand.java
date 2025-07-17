@@ -1,4 +1,4 @@
-package com.barbirms.synthetichumancorestarter;
+package com.barbirms.synthetichumancorestarter.commandModule;
 
 public class AndroidCommand {
     String description;
