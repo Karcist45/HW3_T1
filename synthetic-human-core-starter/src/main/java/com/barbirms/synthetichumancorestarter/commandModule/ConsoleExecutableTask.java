@@ -7,6 +7,14 @@ public class ConsoleExecutableTask extends ExecutableTask {
 
     @Override
     public void run(){
+        for (int i = 0; i < 1000000000; i++){
+
+        }
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("-------------COMMAND--------------");
         System.out.println("AUTHOR: " + super.getCommandAuthor());
         System.out.println("DESCRIPTION: " + super.getCommandDescription());

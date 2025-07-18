@@ -24,6 +24,18 @@ public class BishopController {
         }
     }
 
+    @RequestMapping("/task/notme")
+    public void addNotMineTask() {
+        AndroidCommand command = new AndroidCommand("my first command",
+                CommandPriority.COMMON,
+                "NotMe",
+                "12:00");
+        ExecutableTask task = new ConsoleExecutableTask(command);
+        for(int i = 0; i <= 10; i++) {
+            runner.AddTask(task);
+        }
+    }
+
     @RequestMapping("/task/log/{author}")
     public String addLoggedTask(@PathVariable String author){
         return idk(author);
