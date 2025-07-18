@@ -19,8 +19,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class MetricsCollector {
 
-    private final Dictionary<String, Integer> authors = new Hashtable<>();
-
     private final MeterRegistry registry;
 
     private final CommandRunner commandRunner;

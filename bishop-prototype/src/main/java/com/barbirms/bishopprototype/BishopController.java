@@ -1,48 +1,55 @@
 package com.barbirms.bishopprototype;
 
-import com.barbirms.synthetichumancorestarter.audit.WeylandWatchingYou;
 import com.barbirms.synthetichumancorestarter.commandModule.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BishopController {
-    @Autowired
-    CommandRunner runner;
 
-    @RequestMapping("/task")
-    public void addTask() {
+    @Autowired
+    TaskService taskService;
+    /**
+     * sends 10 fixed tasks to executor
+     * convenient to showcase monitoring
+     */
+    @RequestMapping("/task/batch/author1")
+    public void addBatchAuthor1() {
         AndroidCommand command = new AndroidCommand("my first command",
                 CommandPriority.COMMON,
                 "Me",
                 "12:00");
-        ExecutableTask task = new ConsoleExecutableTask(command);
         for(int i = 0; i <= 10; i++) {
-            runner.AddTask(task);
+            taskService.sendCommand(command);
         }
     }
 
-    @RequestMapping("/task/notme")
-    public void addNotMineTask() {
+    /**
+     * Same as previous, but with different author
+     */
+    @RequestMapping("/task/batch/author2")
+    public void addBatchAuthor2() {
         AndroidCommand command = new AndroidCommand("my first command",
                 CommandPriority.COMMON,
                 "NotMe",
                 "12:00");
-        ExecutableTask task = new ConsoleExecutableTask(command);
         for(int i = 0; i <= 10; i++) {
-            runner.AddTask(task);
+            taskService.sendCommand(command);
         }
     }
 
-    @RequestMapping("/task/log/{author}")
-    public String addLoggedTask(@PathVariable String author){
-        return idk(author);
+    /**
+     * Allows you to send your own commands
+     * They are logged via custom annotation
+     * Allows you to check constraints of command
+     */
+    @RequestMapping("/task/log/{author}/{description}/{time}/{priority}")
+    public void addLoggedTask(@PathVariable String author, @PathVariable String description, @PathVariable String time, @PathVariable CommandPriority priority) {
+        AndroidCommand command = new AndroidCommand(description, priority, author, time);
+        taskService.sendCommandLogged(command);
     }
-
-    @WeylandWatchingYou
-    public String idk(String id){
-        return id;
-    }
+    /**
+     * Exception handlers
+     */
 }

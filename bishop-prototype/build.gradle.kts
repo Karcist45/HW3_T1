@@ -25,6 +25,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("io.micrometer:micrometer-registry-prometheus:1.15.2")
 	implementation("io.micrometer:micrometer-bom:1.15.2")
-	implementation("io.github.mweirauch:micrometer-jvm-extras:0.2.2");
+	implementation("io.github.mweirauch:micrometer-jvm-extras:0.2.2")
+	implementation("org.springframework.kafka:spring-kafka:3.3.7")
 }
 
