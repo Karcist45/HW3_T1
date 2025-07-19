@@ -1,0 +1,31 @@
+plugins {
+	java
+	id("org.springframework.boot") version "3.5.3"
+	id("io.spring.dependency-management") version "1.1.7"
+}
+
+group = "com.BarbirMS"
+version = "0.0.1-SNAPSHOT"
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("com.BarbirMS:synthetic-human-core-starter:0.0.2-SNAPSHOT")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.micrometer:micrometer-registry-prometheus:1.15.2")
+	implementation("io.micrometer:micrometer-bom:1.15.2")
+	implementation("io.github.mweirauch:micrometer-jvm-extras:0.2.2")
+	implementation("org.springframework.kafka:spring-kafka:3.3.7")
+}
+
