@@ -4,10 +4,15 @@
 2) bishop-prototype - uses the library to provide endpoinds for manual testing/showcase 
 ### To run:
 1) Put your ip-address in prometheus.yml (you can learn you ip address with ipconfig command on windows)
-2) run docker-compose up from project directory
-3) turn on Spring Boot Application in project-bishop
-4) You can access Grafana with login: admin and password: admin
-5) Grafana can be found on http://localhost:3000 and Prometheus on http://localhost:9090
+2) run docker-compose up **from project directory**
+3) publish the library to Maven Local by running this command(on Windows) **from directory synthetic-human-core-starter**
+```
+./gradlew.bat publishToMavenLocal
+```
+4) turn on Spring Boot Application in project-bishop
+
+You can access Grafana with login: admin and password: admin
+Grafana can be found on http://localhost:3000 and Prometheus on http://localhost:9090
 
 You can change where WeylandWatchingYou annotation writes its log through **application.yml**. There are currently 2 mods:
 1) CONSOLE - writes in console
