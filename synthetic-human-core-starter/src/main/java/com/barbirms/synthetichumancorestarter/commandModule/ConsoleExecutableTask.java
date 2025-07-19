@@ -7,11 +7,8 @@ public class ConsoleExecutableTask extends ExecutableTask {
 
     @Override
     public void run(){
-        for (int i = 0; i < 1000000000; i++){
-
-        }
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

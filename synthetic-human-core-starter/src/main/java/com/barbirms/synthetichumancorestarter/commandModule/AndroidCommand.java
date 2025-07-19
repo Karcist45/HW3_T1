@@ -6,7 +6,8 @@ public class AndroidCommand {
     String author;
     String time;
 
-    public AndroidCommand(String description, CommandPriority priority, String author, String time) {
+    public AndroidCommand(String description, CommandPriority priority, String author, String time)
+            throws IllegalArgumentException {
         if (description == null || description.length() > 1000) {
             throw new IllegalArgumentException("description cannot be null or longer than 1000 characters");
         }

@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.RejectedExecutionException;
+
 @RestController
 public class BishopController {
 
@@ -19,7 +21,7 @@ public class BishopController {
         AndroidCommand command = new AndroidCommand("my first command",
                 CommandPriority.COMMON,
                 "Me",
-                "12:00");
+                "2025-07-18T08:08:14Z");
         for(int i = 0; i <= 10; i++) {
             taskService.sendCommand(command);
         }
@@ -33,7 +35,7 @@ public class BishopController {
         AndroidCommand command = new AndroidCommand("my first command",
                 CommandPriority.COMMON,
                 "NotMe",
-                "12:00");
+                "2025-07-18T08:08:14Z");
         for(int i = 0; i <= 10; i++) {
             taskService.sendCommand(command);
         }
@@ -52,4 +54,15 @@ public class BishopController {
     /**
      * Exception handlers
      */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String handleValidationException(IllegalArgumentException ex) {
+        return ex.getMessage();
+    }
+
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    @ExceptionHandler(RejectedExecutionException.class)
+    public String handleOverloadException(RejectedExecutionException ex) {
+        return ex.getMessage();
+    }
 }

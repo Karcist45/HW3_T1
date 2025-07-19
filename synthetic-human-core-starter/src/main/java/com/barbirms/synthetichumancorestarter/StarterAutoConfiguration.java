@@ -23,7 +23,7 @@ public class StarterAutoConfiguration {
     public ThreadPoolExecutor executor() {
         return new ThreadPoolExecutor(2, 2, 60L,
                 TimeUnit.MILLISECONDS,
-                new ArrayBlockingQueue<>(100),
+                new ArrayBlockingQueue<>(20),
                 new ThreadPoolExecutor.AbortPolicy());
     }
 

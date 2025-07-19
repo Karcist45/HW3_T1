@@ -6,7 +6,10 @@
 1) Put your ip-address in prometheus.yml (you can learn you ip address with ipconfig command on windows)
 2) run docker-compose up from project directory
 3) turn on Spring Boot Application in project-bishop
+4) You can access Grafana with login: admin and password: admin
 
 You can change where WeylandWatchingYou annotation writes its log through **application.yml**. There are currently 2 mods:
 1) CONSOLE - writes in console
 2) KAFKA - sends to kafka (kafka listener is in project to demonstrate that the message made it to the consumer)
+
+NOTE: commands have 5s delay intentionally to ease checking overload handling 

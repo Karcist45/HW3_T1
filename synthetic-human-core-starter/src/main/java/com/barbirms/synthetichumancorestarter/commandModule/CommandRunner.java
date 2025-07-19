@@ -28,7 +28,7 @@ public class CommandRunner {
         if (task.getCommandPriority() == CommandPriority.CRITICAL){
             task.run();
         } else if (task.getCommandPriority() == CommandPriority.COMMON){
-            executor.submit(task); // todo: catch RejectedExecutionException(should prolly catch 'em in controllers
+            executor.submit(task);
         }
     }
 
