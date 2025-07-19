@@ -7,6 +7,7 @@
 2) run docker-compose up from project directory
 3) turn on Spring Boot Application in project-bishop
 4) You can access Grafana with login: admin and password: admin
+5) Grafana can be found on http://localhost:3000 and Prometheus on http://localhost:9090
 
 You can change where WeylandWatchingYou annotation writes its log through **application.yml**. There are currently 2 mods:
 1) CONSOLE - writes in console
